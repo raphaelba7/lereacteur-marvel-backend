@@ -6,7 +6,7 @@ const axios = require("axios");
 // get  list of character
 router.get(`/characters`, async (req, res) => {
   try {
-    const { name, skip, limit } = req.query;
+    const { name = "", skip = "", limit = "" } = req.query;
 
     const response = await axios.get(
       `${process.env.API_URL}characters?apiKey=${process.env.API_KEY}&name=${name}&limit=${limit}&skip=${skip}`

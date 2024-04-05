@@ -1,24 +1,41 @@
-// require("dotenv").config();
+require("dotenv").config();
 
-const express = require("express"); // import du package express
+const express = require("express"); // import package express
+const mongoose = require("mongoose");
 const cors = require("cors");
 
-const app = express(); // création du serveur
+const app = express(); // Creat serv
 
 app.use(cors());
 app.use(express.json());
 
-const comicRoutes = require("./routes/comic");
-app.use(comicRoutes);
+mongoose.connect(process.env.MONGODB_URI);
 
-const characterRoutes = require("./routes/character");
-app.use(characterRoutes);
+// route all comics && comics by character
+const comicsRoutes = require("./routes/comics");
+app.use(comicsRoutes);
+
+// route all character
+const charactersRoutes = require("./routes/characters");
+app.use(charactersRoutes);
+
+// route login  and signin
+const loginSignInRoutes = require("./routes/user");
+app.use(loginSignInRoutes);
+
+// route favoris character
+const characFavRoutes = require("./routes/favorisChar");
+app.use(characFavRoutes);
+
+// route favoris comics
+const comicsFavRoutes = require("./routes/favorisCom");
+app.use(comicsFavRoutes);
 
 app.all("*", (req, res) => {
   res.status(500).json({ message: "This page does not exist" });
 });
 
 app.listen(process.env.PORT || 3000, () => {
-  // Mon serveur va écouter l'api du réacteur
-  console.log("Server started 🔥"); // Quand je vais lancer ce serveur, la callback va être appelée
+  // My serv listener
+  console.log("Server started 🔥");
 });
