@@ -31,4 +31,18 @@ router.get(`/comics/:characterId`, async (req, res) => {
   }
 });
 
+// get comic info
+router.get(`/comic/:comicId`, async (req, res) => {
+  try {
+    const { comicId } = req.params;
+    const { data } = await axios.get(
+      `${process.env.API_URL}comic/${comicId}?apiKey=${process.env.API_KEY}`
+    );
+    console.log(data);
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;
