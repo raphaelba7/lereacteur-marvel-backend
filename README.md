@@ -9,8 +9,8 @@
 - [x] **Express**
 - [x] Frontend **React** [Github](https://github.com/raphaelba7/lereacteur-marvel-frontend)
 
-Front Hosted on [Netlify](https://site--backend-marvel--ky7tz22vm4g7.code.run/) \
-Backend hosted on [NorthFlank]()
+Front Hosted on [Netlify](https://lereacteur-marvel-raphaelbasset.netlify.app/) \
+Backend hosted on [NorthFlank](https://site--backend-marvel--ky7tz22vm4g7.code.run/)
 
 ## Tech Stack
 
