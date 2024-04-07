@@ -40,7 +40,7 @@ router.post("/favoris/char", isAuthenticated, async (req, res) => {
     if (existingCharacter) {
       return res.status(400).json({ message: "Already in database" });
     }
-    if (name && id_api && image && description) {
+    if (name && id_api && image) {
       const newFavorisChar = new FavorisChar({
         name,
         id_api,
@@ -51,7 +51,9 @@ router.post("/favoris/char", isAuthenticated, async (req, res) => {
       await newFavorisChar.save();
       res.status(201).json("Character added in favorite!");
     } else {
-      res.status(400).json({ message: "name, id_api and image are required" });
+      res
+        .status(400)
+        .json({ message: "name, id_api, description and image are required" });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });

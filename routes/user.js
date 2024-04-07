@@ -7,7 +7,7 @@ const encBase64 = require("crypto-js/enc-base64");
 
 const User = require("../models/User");
 
-router.post("/user/signin", async (req, res) => {
+router.post("/user/signup", async (req, res) => {
   try {
     // Search in BDD if user already exist
     const user = await User.findOne({ email: req.body.email });

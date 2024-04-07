@@ -51,7 +51,9 @@ router.post("/favoris/comics", isAuthenticated, async (req, res) => {
       await newFavorisCom.save();
       res.status(201).json("Comics added in favorite!");
     } else {
-      res.status(400).json({ message: "title, id_api and image are required" });
+      res
+        .status(400)
+        .json({ message: "title, id_api, description and image are required" });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
